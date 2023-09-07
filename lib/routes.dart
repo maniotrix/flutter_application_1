@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/accounts_screen.dart';
+import 'package:flutter_application_1/gql_client.dart';
 import 'package:flutter_application_1/login_screen.dart';
 import 'package:flutter_application_1/main_screen.dart';
+import 'package:flutter_application_1/repositories/home.dart';
 import 'package:flutter_application_1/transactions_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -52,8 +54,7 @@ final goRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: 'transactions',
-                  builder: (context, state) =>
-                      const TransactionsScreen(),
+                  builder: (context, state) => const TransactionsScreen(),
                 ),
               ],
             ),
@@ -264,6 +265,14 @@ class DetailsScreen extends StatefulWidget {
 /// The state for DetailsScreen
 class DetailsScreenState extends State<DetailsScreen> {
   int _counter = 0;
+
+  @override
+  void initState() {
+    HomeRepository(client: graphqlClient).getHomeData().then((value) {
+      //print('Homepage Data : ${value}');
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
