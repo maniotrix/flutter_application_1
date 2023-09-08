@@ -7,7 +7,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -34,19 +34,30 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (state is HomeLoadedState) {
             final result = state.result;
             final homeData = result.data?['home'];
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Card(
-                    child: Center(
-                  child: Column(
-                    children: [
-                      Text(homeData['name']),
-                      Text('Account No: ${homeData['accountNumber']}')
-                    ],
-                  ),
-                )),
-              ),
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Card(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      homeData['name'],
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    Text(
+                      'Account No: ${homeData['accountNumber']}',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Text(
+                      'Balance: ${homeData['balance']} ${homeData['currency']}',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                  ],
+                ),
+              )),
             );
             /* return ListView.builder(
               itemCount: homeData.length,

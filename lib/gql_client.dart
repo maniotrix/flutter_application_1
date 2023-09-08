@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 final HttpLink _httpLink = HttpLink(
-  'http://192.168.1.13:4000/',
+  'http://192.168.1.15:4000/',
 );
 
 final Link _link = _httpLink;
