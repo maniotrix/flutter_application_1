@@ -4,6 +4,7 @@ import 'package:flutter_application_1/gql_client.dart';
 import 'package:flutter_application_1/login_screen.dart';
 import 'package:flutter_application_1/main_screen.dart';
 import 'package:flutter_application_1/repositories/home.dart';
+import 'package:flutter_application_1/screens/home/home_screen.dart';
 import 'package:flutter_application_1/transactions_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,7 +31,7 @@ final goRouter = GoRouter(
             GoRoute(
               path: '/home',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Home', detailsPath: '/home/details'),
+                child: HomeScreen(),
               ),
               routes: [
                 GoRoute(

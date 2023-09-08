@@ -1,3 +1,3 @@
-class HomeEvent {}
+sealed class HomeEvent {}
 
-class HomeLoadEvent extends HomeEvent {}
+final class HomeNavigatedEvent extends HomeEvent {}
