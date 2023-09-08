@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes.dart';
+import 'package:flutter_application_1/screens/accounts/accounts_bloc.dart';
 import 'package:flutter_application_1/screens/home/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,8 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeBloc(),),
+        BlocProvider(create: (context) => AccountsBloc(),)
+      ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
         theme: ThemeData(

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/accounts_screen.dart';
-import 'package:flutter_application_1/gql_client.dart';
 import 'package:flutter_application_1/login_screen.dart';
 import 'package:flutter_application_1/main_screen.dart';
-import 'package:flutter_application_1/repositories/home.dart';
+import 'package:flutter_application_1/screens/accounts/accounts_screen.dart';
 import 'package:flutter_application_1/screens/home/home_screen.dart';
 import 'package:flutter_application_1/transactions_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -269,9 +267,6 @@ class DetailsScreenState extends State<DetailsScreen> {
 
   @override
   void initState() {
-    HomeRepository(client: graphqlClient).getHomeData().then((value) {
-      //print('Homepage Data : ${value}');
-    });
     super.initState();
   }
 
