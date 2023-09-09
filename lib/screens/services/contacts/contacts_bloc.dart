@@ -15,8 +15,9 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
           .getContactsData()
           .then((value) {
         emit(ContactsLoadedState(result: value));
+      }).onError((error, stackTrace) {
+        emit(ContactsErrorState(error: error! as OperationException));
       });
     });
   }
 }
- 

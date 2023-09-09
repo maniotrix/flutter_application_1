@@ -19,7 +19,7 @@ class ServiceRepository {
     );
     print(results);
     if (results.hasException) {
-      return Future.error('Contacts Result Exception');
+      return Future.error(results.exception!);
     } else {
       return results;
     }

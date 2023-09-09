@@ -19,4 +19,7 @@ class ContactsLoadedState extends ContactsState {
   });
 }
 
-class ContactsErrorState extends ContactsState {}
+class ContactsErrorState extends ContactsState {
+  final OperationException error;
+  const ContactsErrorState({required this.error});
+}

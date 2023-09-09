@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/accounts/accounts_screen.dart';
-import 'package:flutter_application_1/screens/transactions/transactions_bloc.dart';
+import 'package:flutter_application_1/screens/accounts/transactions/transactions_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TransactionsScreen extends StatefulWidget {

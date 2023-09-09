@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login_screen.dart';
 import 'package:flutter_application_1/main_screen.dart';
 import 'package:flutter_application_1/screens/accounts/accounts_screen.dart';
+import 'package:flutter_application_1/screens/accounts/transactions/transactions_screen.dart';
 import 'package:flutter_application_1/screens/home/home_screen.dart';
-import 'package:flutter_application_1/transactions_screen.dart';
+import 'package:flutter_application_1/screens/services/contacts/contacts_screen.dart';
+import 'package:flutter_application_1/screens/services/services_screen.dart';
 import 'package:go_router/go_router.dart';
 
 // private navigators
@@ -66,14 +68,13 @@ final goRouter = GoRouter(
             GoRoute(
               path: '/services',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(
-                    label: 'Services', detailsPath: '/services/details'),
+                child: ServicesScreen(),
               ),
               routes: [
                 GoRoute(
-                  path: 'details',
+                  path: 'contacts',
                   builder: (context, state) =>
-                      const DetailsScreen(label: 'Services'),
+                      const ContactsScreen(),
                 ),
               ],
             ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes.dart';
 import 'package:flutter_application_1/screens/accounts/accounts_bloc.dart';
+import 'package:flutter_application_1/screens/accounts/transactions/transactions_bloc.dart';
 import 'package:flutter_application_1/screens/home/bloc.dart';
-import 'package:flutter_application_1/screens/transactions/transactions_bloc.dart';
+import 'package:flutter_application_1/screens/services/contacts/contacts_bloc.dart';
+import 'package:flutter_application_1/screens/services/statements/statements_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
@@ -17,9 +19,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => HomeBloc(),),
-        BlocProvider(create: (context) => AccountsBloc(),),
-        BlocProvider(create: (context) => TransactionsBloc(),),
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AccountsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => TransactionsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ContactsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => StatementsBloc(),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
