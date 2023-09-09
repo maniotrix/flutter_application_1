@@ -39,7 +39,9 @@ class _StatementsScreenState extends State<StatementsScreen> {
       dropDownValues.add(parsedDate.year);
     }
 
-    dropDownValues.toList().sort();
+    List<int> values = dropDownValues.toList();
+    values.sort();
+    dropDownValues = values.reversed.toSet();
     //selectedYear = dropDownValues.first;
   }
 
@@ -52,7 +54,13 @@ class _StatementsScreenState extends State<StatementsScreen> {
         filterdStatements.add(statement);
       }
     }
-    //filterdStatements.sort();
+    filterdStatements.sort(
+      (a, b) {
+        var dateA = DateTime.parse(formatDates(a['date']));
+        var dateB = DateTime.parse(formatDates(b['date']));
+        return dateA.compareTo(dateB);
+      },
+    );
   }
 
   @override

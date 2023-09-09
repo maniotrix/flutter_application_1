@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_application_1/constants.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 final HttpLink _httpLink = HttpLink(
-  'http://192.168.1.15:4000/',
+  'http://$Apollo_SandBox_IpAddress:4000/',
 );
 
 final Link _link = _httpLink;

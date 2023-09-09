@@ -153,9 +153,9 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
         selectedIndex: selectedIndex,
         destinations: const [
           NavigationDestination(label: 'Home', icon: Icon(Icons.home)),
-          NavigationDestination(label: 'Accounts', icon: Icon(Icons.settings)),
+          NavigationDestination(label: 'Accounts', icon: Icon(Icons.account_circle)),
           NavigationDestination(
-              label: 'Services', icon: Icon(Icons.room_service)),
+              label: 'Services', icon: Icon(Icons.miscellaneous_services)),
         ],
         onDestinationSelected: onDestinationSelected,
       ),
@@ -190,11 +190,11 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
               ),
               NavigationRailDestination(
                 label: Text('Accounts'),
-                icon: Icon(Icons.settings),
+                icon: Icon(Icons.account_circle),
               ),
               NavigationRailDestination(
                 label: Text('Services'),
-                icon: Icon(Icons.room_service),
+                icon: Icon(Icons.miscellaneous_services),
               ),
             ],
           ),
