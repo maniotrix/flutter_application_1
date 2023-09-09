@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/accounts/accounts_bloc.dart';
+import 'package:flutter_application_1/screens/services/statements/statements_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class RootAccountsScreen extends StatefulWidget {
-  const RootAccountsScreen({Key? key}) : super(key: key);
+class StatementsScreen extends StatefulWidget {
+  const StatementsScreen({Key? key}) : super(key: key);
 
   @override
-  State<RootAccountsScreen> createState() => _RootAccountsScreenState();
+  State<StatementsScreen> createState() => _StatementsScreenState();
 }
 
-class _RootAccountsScreenState extends State<RootAccountsScreen> {
+class _StatementsScreenState extends State<StatementsScreen> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<AccountsBloc>().add(AccountsNavigatedEvent());
+      context.read<StatementsBloc>().add(StatementsNavigatedEvent());
     });
   }
 
@@ -23,31 +23,29 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Accounts Screen'),
+        title: const Text('Statements Screen'),
       ),
-      body: BlocBuilder<AccountsBloc, AccountsState>(
+      body: BlocBuilder<StatementsBloc, StatementsState>(
         builder: (context, state) {
-          if (state is AccountsLoadingState) {
+          if (state is StatementsLoadingState) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is AccountsLoadedState) {
+          } else if (state is StatementsLoadedState) {
             final result = state.result;
-            final accountsData = result.data?['accounts'];
+            final statementsData = result.data?['statements'];
             return ListView.builder(
-              itemCount: accountsData.length,
+              itemCount: statementsData.length,
               itemBuilder: (context, index) {
                 print(result.data);
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      context.go('/accounts/transactions',
-                          extra:
-                              AccountsParameters(accountsData: accountsData[index]));
+                      context.go('/services/statements/pdf');
                     },
                     child: Card(
-                      child: Text(accountsData[index]['accountHolder']),
+                      child: Text(statementsData[index]['description']),
                     ),
                   ), /*  */
                 );
@@ -64,8 +62,3 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
   }
 }
 
-class AccountsParameters {
-  final dynamic accountsData;
-
-  AccountsParameters({required this.accountsData});
-}

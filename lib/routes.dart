@@ -6,6 +6,8 @@ import 'package:flutter_application_1/screens/accounts/transactions/transactions
 import 'package:flutter_application_1/screens/home/home_screen.dart';
 import 'package:flutter_application_1/screens/services/contacts/contacts_screen.dart';
 import 'package:flutter_application_1/screens/services/services_screen.dart';
+import 'package:flutter_application_1/screens/services/statements/pdf_screen.dart';
+import 'package:flutter_application_1/screens/services/statements/statements_screen.dart';
 import 'package:go_router/go_router.dart';
 
 // private navigators
@@ -55,7 +57,9 @@ final goRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: 'transactions',
-                  builder: (context, state) => TransactionsScreen(arguments: state.extra as dynamic,),
+                  builder: (context, state) => TransactionsScreen(
+                    arguments: state.extra as dynamic,
+                  ),
                 ),
               ],
             ),
@@ -73,9 +77,17 @@ final goRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: 'contacts',
-                  builder: (context, state) =>
-                      const ContactsScreen(),
+                  builder: (context, state) => const ContactsScreen(),
                 ),
+                GoRoute(
+                    path: 'statements',
+                    builder: (context, state) => const StatementsScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'pdf',
+                        builder: (context, state) => const PDFScreen(),
+                      ),
+                    ]),
               ],
             ),
           ],

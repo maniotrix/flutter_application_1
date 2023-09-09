@@ -52,6 +52,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
       // and use it to show a SnackBar.
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } else if (index == 1) {
+      context.go('/services/statements');
     } else {
       context.go('/services/contacts');
     }
