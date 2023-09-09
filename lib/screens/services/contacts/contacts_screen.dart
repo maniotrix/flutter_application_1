@@ -22,7 +22,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contacts Screen'),
+        title: const Text('Contacts'),
       ),
       body: BlocBuilder<ContactsBloc, ContactsState>(
         builder: (context, state) {

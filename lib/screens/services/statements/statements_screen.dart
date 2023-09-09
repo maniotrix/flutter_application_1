@@ -23,7 +23,7 @@ class _StatementsScreenState extends State<StatementsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Statements Screen'),
+        title: const Text('Statements'),
       ),
       body: BlocBuilder<StatementsBloc, StatementsState>(
         builder: (context, state) {
@@ -61,4 +61,3 @@ class _StatementsScreenState extends State<StatementsScreen> {
     );
   }
 }
-

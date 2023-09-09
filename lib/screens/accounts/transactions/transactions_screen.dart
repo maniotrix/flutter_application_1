@@ -46,8 +46,12 @@ class _TransactionsScreenState extends State<TransactionsScreen>
       ),
       body: Column(
         children: <Widget>[
-          Text('Details for Transactions : ${accounts['accountHolder']}',
-              style: Theme.of(context).textTheme.titleLarge),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                '${accounts['accountHolder']}, Balance - ${accounts['balance']}',
+                style: Theme.of(context).textTheme.titleLarge),
+          ),
           Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
@@ -89,9 +93,16 @@ class _TransactionsScreenState extends State<TransactionsScreen>
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
-                                child: Text(
+                                  child: ListTile(
+                                title: Text(
                                     transactionsData[index]['description']),
-                              ), /*  */
+                                subtitle: Text(
+                                    'To- ${transactionsData[index]['External']}'),
+                                trailing: Text((transactionsData[index]
+                                        ['amount'] as double)
+                                    .toStringAsFixed(2)),
+                                leading: Text(transactionsData[index]['date']),
+                              )), /*  */
                             );
                           },
                         );
@@ -123,9 +134,13 @@ class _TransactionsScreenState extends State<TransactionsScreen>
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                             Text(
-                              'Balance: ${accounts['balance']} USD}',
+                              'Balance: ${accounts['balance']} USD',
                               style: Theme.of(context).textTheme.bodyLarge,
-                            )
+                            ),
+                            Text(
+                              'Account Type: ${accounts['accountType']}',
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
                           ],
                         ),
                       )),
