@@ -23,7 +23,7 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Accounts Screen'),
+        title: const Text('Accounts'),
       ),
       body: BlocBuilder<AccountsBloc, AccountsState>(
         builder: (context, state) {
@@ -43,8 +43,8 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
                   child: InkWell(
                     onTap: () {
                       context.go('/accounts/transactions',
-                          extra:
-                              AccountsParameters(accountsData: accountsData[index]));
+                          extra: AccountsParameters(
+                              accountsData: accountsData[index]));
                     },
                     child: Card(
                       child: Text(accountsData[index]['accountHolder']),
