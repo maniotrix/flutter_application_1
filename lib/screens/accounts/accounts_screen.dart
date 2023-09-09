@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/accounts/accounts_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class RootAccountsScreen extends StatefulWidget {
   const RootAccountsScreen({Key? key}) : super(key: key);
@@ -10,7 +11,6 @@ class RootAccountsScreen extends StatefulWidget {
 }
 
 class _RootAccountsScreenState extends State<RootAccountsScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -40,7 +40,16 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
                 print(result.data);
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Card(child: Text(accountsData[index]['accountHolder']),),
+                  child: InkWell(
+                    onTap: () {
+                      context.go('/accounts/transactions',
+                          extra:
+                              AccountsParameters(accountsData: accountsData[index]));
+                    },
+                    child: Card(
+                      child: Text(accountsData[index]['accountHolder']),
+                    ),
+                  ), /*  */
                 );
               },
             );
@@ -53,4 +62,10 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
       ),
     );
   }
+}
+
+class AccountsParameters {
+  final dynamic accountsData;
+
+  AccountsParameters({required this.accountsData});
 }

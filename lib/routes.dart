@@ -53,7 +53,7 @@ final goRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: 'transactions',
-                  builder: (context, state) => const TransactionsScreen(),
+                  builder: (context, state) => TransactionsScreen(arguments: state.extra as dynamic,),
                 ),
               ],
             ),

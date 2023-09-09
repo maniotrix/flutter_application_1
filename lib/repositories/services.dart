@@ -1,22 +1,16 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class AccountsRepository {
+class ServiceRepository {
   final GraphQLClient client;
 
-  AccountsRepository({
+  ServiceRepository({
     required this.client,
   });
 
-  Future<QueryResult> getAccountsData() async {
+  Future<QueryResult> getContactsData() async {
     const String query = r'''
-                          query getAccounts {
-                                  accounts {
-                                    id
-                                    accountNumber
-                                    accountType
-                                    balance
-                                    accountHolder
-                                  }
+                          query getContacts {
+                                  contacts
                                 }''';
     final results = await client.query(
       QueryOptions(
@@ -25,21 +19,19 @@ class AccountsRepository {
     );
     print(results);
     if (results.hasException) {
-      return Future.error('Accounts Result Exception');
+      return Future.error('Contacts Result Exception');
     } else {
       return results;
     }
   }
 
-  Future<QueryResult> getTransactionsData() async {
+  Future<QueryResult> getStatementsData() async {
     const String query = r'''
-                          query getTransactions {
-                                  transactions {
+                          query getStatements {
+                                  statements {
                                     date
                                     description
                                     amount
-                                    fromAccount
-                                    toAccount
                                   }
                                 }''';
     final results = await client.query(
@@ -49,7 +41,7 @@ class AccountsRepository {
     );
     print(results);
     if (results.hasException) {
-      return Future.error('Transactions Result Exception');
+      return Future.error('Statements Result Exception');
     } else {
       return results;
     }
