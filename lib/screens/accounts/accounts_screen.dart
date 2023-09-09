@@ -47,7 +47,15 @@ class _RootAccountsScreenState extends State<RootAccountsScreen> {
                               accountsData: accountsData[index]));
                     },
                     child: Card(
-                      child: Text(accountsData[index]['accountHolder']),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text(accountsData[index]['accountHolder']),
+                            subtitle: Text('Account- ${accountsData[index]['accountNumber']}'),
+                            trailing: Text(accountsData[index]['accountType']),
+                          )
+                        ],
+                      ),
                     ),
                   ), /*  */
                 );
