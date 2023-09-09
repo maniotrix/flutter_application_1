@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool passwordVisible = false;
+  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Image.asset('assets/images/flutter-logo.png')),
                 ),
               ),
-              const Padding(
+              Padding(
                 //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  decoration: InputDecoration(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: TextField(controller: myController,
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Email',
-                      hintText: 'Enter valid email id as abc@gmail.com'),
+                      labelText: 'Username',
+                      hintText: 'Enter valid username'),
                 ),
               ),
               Padding(
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: OutlinedButton(
                   onPressed: () {
-                    context.go('/home');
+                    context.go('/home', extra: myController.text);
                   },
                   child: const Text(
                     'Login',
@@ -89,6 +90,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
   }
 
 }

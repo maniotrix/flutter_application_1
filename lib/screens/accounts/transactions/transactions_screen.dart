@@ -31,8 +31,6 @@ class _TransactionsScreenState extends State<TransactionsScreen>
   }
 
   setAccountsData() {
-    /* final data =
-        (widget.arguments as AccountsParameters).accountsData['accountHolder']; */
     final data = widget.arguments;
     if (data == null) {
     } else {
