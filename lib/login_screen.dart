@@ -32,14 +32,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SizedBox(
                       width: 200,
                       height: 150,
-                      /*decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(50.0)),*/
                       child: Image.asset('assets/images/flutter-logo.png')),
                 ),
               ),
               Padding(
-                //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(controller: myController,
                   decoration: const InputDecoration(
@@ -51,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(
                     left: 15.0, right: 15.0, top: 15, bottom: 0),
-                //padding: EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
                   obscureText: !passwordVisible,
                   decoration: InputDecoration(

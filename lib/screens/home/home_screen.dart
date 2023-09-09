@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -93,17 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )),
                 );
-                /* return ListView.builder(
-                  itemCount: homeData.length,
-                  itemBuilder: (context, index) {
-                    print(result.data);
-                    return ListTile(
-                      key: Key(homeData['accountNumber']),
-                      title: Text(homeData['name']),
-                      subtitle: Text('Account No: ${homeData['accountNumber']}'),
-                    );
-                  },
-                ); */
               } else {
                 return const Center(
                   child: Text('You have an error'),

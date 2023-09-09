@@ -32,7 +32,9 @@ final goRouter = GoRouter(
             GoRoute(
               path: '/home',
               pageBuilder: (context, state) => NoTransitionPage(
-                child: HomeScreen(arguments: state.extra as String,),
+                child: HomeScreen(
+                  arguments: state.extra as String,
+                ),
               ),
             ),
           ],
@@ -40,7 +42,6 @@ final goRouter = GoRouter(
         StatefulShellBranch(
           navigatorKey: _shellNavigatorBKey,
           routes: [
-            // Shopping Cart
             GoRoute(
               path: '/accounts',
               pageBuilder: (context, state) => const NoTransitionPage(
@@ -60,7 +61,6 @@ final goRouter = GoRouter(
         StatefulShellBranch(
           navigatorKey: _shellNavigatorCKey,
           routes: [
-            // Shopping Cart
             GoRoute(
               path: '/services',
               pageBuilder: (context, state) => const NoTransitionPage(
@@ -87,8 +87,7 @@ final goRouter = GoRouter(
       ],
     ),
     GoRoute(
-      name:
-          'login', // Optional, add name to your routes. Allows you navigate by name instead of path
+      name: 'login',
       path: '/',
       builder: (context, state) => const LoginScreen(),
     ),
@@ -153,7 +152,8 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
         selectedIndex: selectedIndex,
         destinations: const [
           NavigationDestination(label: 'Home', icon: Icon(Icons.home)),
-          NavigationDestination(label: 'Accounts', icon: Icon(Icons.account_circle)),
+          NavigationDestination(
+              label: 'Accounts', icon: Icon(Icons.account_circle)),
           NavigationDestination(
               label: 'Services', icon: Icon(Icons.miscellaneous_services)),
         ],

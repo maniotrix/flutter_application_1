@@ -42,7 +42,6 @@ class _StatementsScreenState extends State<StatementsScreen> {
     List<int> values = dropDownValues.toList();
     values.sort();
     dropDownValues = values.reversed.toSet();
-    //selectedYear = dropDownValues.first;
   }
 
   setFilteredStatements(int year) {
@@ -135,7 +134,6 @@ class _StatementsScreenState extends State<StatementsScreen> {
                               trailing: Text(
                                   '\$${(filterdStatements[index]['amount'] as double).toStringAsFixed(2)}'),
                             ),
-                            //Text(statementsData[index]['description']),
                           ),
                         ), /*  */
                       );
