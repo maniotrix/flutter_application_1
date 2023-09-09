@@ -97,7 +97,7 @@ class _TransactionsScreenState extends State<TransactionsScreen>
                                 title: Text(
                                     transactionsData[index]['description']),
                                 subtitle: Text(
-                                    'To- ${transactionsData[index]['External']}'),
+                                    'To- ${transactionsData[index]['toAccount']}'),
                                 trailing: Text('\$${
                                   (transactionsData[index]['amount'] as double)
                                       .toStringAsFixed(2)
