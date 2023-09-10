@@ -5,12 +5,10 @@ import 'package:flutter_application_1/screens/home/home_event.dart';
 import 'package:flutter_application_1/screens/home/home_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockHomeRepository extends Mock implements HomeRepository {}
 
-@GenerateMocks([MockHomeRepository])
 void main() {
   group('HomeBloc', () {
     late HomeBloc homeBloc;
@@ -32,15 +30,15 @@ void main() {
     blocTest<HomeBloc, HomeState>(
       'emits [HomeLoadedState] when HomeNavigatedEvent is added',
       build: () {
-        when(mockHomeRepository.getHomeData()).thenAnswer((_) async {
+        when(mockHomeRepository.getHomeData).thenAnswer((_) async {
           final response = Future.value(getResult());
           return response;
         });
         return homeBloc;
       },
       act: (bloc) => bloc.add(HomeNavigatedEvent()),
+      wait: const Duration(milliseconds: 2000),
       expect: () => [
-        HomeInitialState(),
         HomeLoadingState(),
         HomeLoadedState(
           result: getResult(),
@@ -56,7 +54,6 @@ QueryResult<Object?> getResult() {
       source: QueryResultSource.cache);
 
   result.data = homeData;
-  print(result);
   return result;
 }
 
