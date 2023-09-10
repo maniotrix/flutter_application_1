@@ -43,7 +43,7 @@ class HomeRepository {
         document: gql(query),
       ),
     );
-    print(results);
+    //print(results);
     if (results.hasException) {
       return Future.error('Home Result Exception');
     } else {

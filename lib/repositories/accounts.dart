@@ -23,7 +23,7 @@ class AccountsRepository {
         document: gql(query),
       ),
     );
-    print(results);
+    //print(results);
     if (results.hasException) {
       return Future.error('Accounts Result Exception');
     } else {

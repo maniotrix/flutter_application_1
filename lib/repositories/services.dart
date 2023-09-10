@@ -8,7 +8,8 @@ class ServiceRepository {
   });
 
   Future<QueryResult> getContactsData() async {
-    const String query = r'''
+    const String query =
+        r'''
                           query getContacts {
                                   contacts
                                 }''';
@@ -26,7 +27,8 @@ class ServiceRepository {
   }
 
   Future<QueryResult> getStatementsData() async {
-    const String query = r'''
+    const String query =
+        r'''
                           query getStatements {
                                   statements {
                                     date
@@ -39,7 +41,7 @@ class ServiceRepository {
         document: gql(query),
       ),
     );
-    print(results);
+    //print(results);
     if (results.hasException) {
       return Future.error('Statements Result Exception');
     } else {
